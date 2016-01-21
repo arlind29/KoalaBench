@@ -34,11 +34,11 @@ java DBGen
 It generates data with the default parameters: the .tab data format, snow flake data model and scale factor sf=1. 
 
 Below, we list the invocation options: 
-      - Format: To specify a data format it is enough to add one of the values csv, json, xml or tab. The default value is tab. 
-      - Data model: To specify a data model it is enough to add one of the values snow, star, flat or sparse. The default value is snow. 
-      - Scale factor: To specify the scale factor you have to input sfX with X the value of the scale factor. For instance, sf10 stands for scale factor 10. The default scale factor is 1. 
-      - Output folder: To generate data in another location in the file system, please specify the absolute directory location preceded by the symbol > without a space in between e.x. >/usr/local/data/tmp_dir/ 
-      - Output HDFS folder: To generate data in the Hadoop file system, please specify the absolute hdfs file location preceded by the symbol > without a space in between e.x. >hdfs://nn1.example.com/user/hadoop/dir
+- Format: To specify a data format it is enough to add one of the values csv, json, xml or tab. The default value is tab. 
+- Data model: To specify a data model it is enough to add one of the values snow, star, flat or sparse. The default value is snow. 
+- Scale factor: To specify the scale factor you have to input sfX with X the value of the scale factor. For instance, sf10 stands for scale factor 10. The default scale factor is 1. 
+- Output folder: To generate data in another location in the file system, please specify the absolute directory location preceded by the symbol > without a space in between e.x. >/usr/local/data/tmp_dir/ 
+- Output HDFS folder: To generate data in the Hadoop file system, please specify the absolute hdfs file location preceded by the symbol > without a space in between e.x. >hdfs://nn1.example.com/user/hadoop/dir
 
 For instance
 
