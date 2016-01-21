@@ -71,4 +71,11 @@ The documentation is available on the following links:
 - TPC-H documentation: http://www.tpc.org/tpc_documents_current_versions/pdf/tpch2.17.1.pdf
 - SSB documentation: http://www.cs.umb.edu/~poneil/StarSchemaB.PDF 
 
+Notes and contact
+-----------------
+
 This is an ongoing work. There might be bugs and unsolved issues. 
+
+- Arlind Kopliku: Arlind.Kopliku at irit.fr Postdoc at the University of Toulouse III, non permanent
+- Olivier Teste: Olivier.Teste at irit.fr Professor at the University of Toulouse III, permanent
+- Mohammed El Malki: Mohammed.ElMalki at irit.fr PhD student at the University of Toulouse III, permanent
