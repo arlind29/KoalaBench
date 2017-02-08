@@ -163,7 +163,6 @@ public class DBGen{
 	}
 
 	public static void main(String argz[]){	
-		argz = new String[4]; argz[0]="sf1"; argz[1]="snow"; argz[2]="filter-file=schemas.txt"; argz[3]="json"; //argz[3]="file:ytytyt/jhj//";
 		DBGen gen = new DBGen(argz);
 		gen.generate();
 	}
