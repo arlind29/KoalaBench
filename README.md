@@ -76,6 +76,6 @@ Notes and contact
 
 This is an ongoing work. There might be bugs and unsolved issues. 
 
-- Arlind Kopliku: Arlind.Kopliku at irit.fr Postdoc at the University of Toulouse III, non permanent
+- Arlind Kopliku: ArlindKopliku at irit.fr Software Engineer, PhD 
 - Olivier Teste: Olivier.Teste at irit.fr Professor at the University of Toulouse III, permanent
 - Mohammed El Malki: Mohammed.ElMalki at irit.fr PhD student at the University of Toulouse III, permanent
