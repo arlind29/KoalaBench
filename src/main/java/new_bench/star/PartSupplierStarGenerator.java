@@ -97,13 +97,13 @@ public class PartSupplierStarGenerator implements Iterable<Entity> {
 				Supplier supp = suppIt.makeSupplier(partSupp.getSupplierKey());
 				Nation n = natIt.makeNation((int)supp.getNationKey());
 				Region r = regIt.makeRegion((int) n.getRegionKey());
-				System.out.println(supp.toJson());
-				System.out.println(part.toJson());
-				System.out.println(partSupp.toJson());
-				System.out.println(n.toJson());
-				System.out.println(r.toJson());
+				System.out.println(supp.toJson(null));
+				System.out.println(part.toJson(null));
+				System.out.println(partSupp.toJson(null));
+				System.out.println(n.toJson(null));
+				System.out.println(r.toJson(null));
 				PartSupplierStar pss = new PartSupplierStar(i, part, supp, partSupp, n, r); 
-				System.out.println("* "+ pss.toJson());
+				System.out.println("* "+ pss.toJson(null));
 				
 			}catch(Exception e){System.out.println("Warning: "+ e.getLocalizedMessage()); e.printStackTrace();}
 			//Part part = partIt.next(); 

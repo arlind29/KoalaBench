@@ -58,9 +58,9 @@ public class PartSupplier extends AbstractEntity{
     public static void main(String argz[]){
     	PartSupplier p = new PartSupplier(1,1,1,798,1,"a");
     	System.out.println(p); 
-    	System.out.println(p.toLine());
-    	System.out.println(p.toJson());
-    	System.out.println(p.toXML());
-    	System.out.println(p.toCSV(","));
+    	System.out.println(p.toLine(null));
+    	System.out.println(p.toJson(null));
+    	System.out.println(p.toXML(null));
+    	System.out.println(p.toCSV(",", null));
     }    
 }

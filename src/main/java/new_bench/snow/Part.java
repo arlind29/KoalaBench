@@ -88,9 +88,9 @@ public class Part extends AbstractEntity
     	Part p = new Part(1,1,"a","a","a","a",1,"a",1,"a");
     	//System.out.println(p.values); 
     	System.out.println(p); 
-    	System.out.println(p.toLine());
-    	System.out.println(p.toJson());
-    	System.out.println(p.toXML());
-    	System.out.println(p.toCSV(","));
+    	System.out.println(p.toLine(null));
+    	System.out.println(p.toJson(null));
+    	System.out.println(p.toXML(null));
+    	System.out.println(p.toCSV(",", null));
     }
 }

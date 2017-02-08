@@ -13,63 +13,66 @@
  */
 package new_bench.types;
 
+import java.util.HashMap;
+
+import new_bench.util.SchemaFilters;
+
 
 public class ArrayEntityInstance extends EntityInstance 
-{	
-	protected KeyValue[] keyValues; 
-	
-	public ArrayEntityInstance(String attributeName, KeyValue[] keyValues){
-		super(attributeName); 
-		headers = new String[]{relationName}; 
-		types =  new String[]{"a"}; 
-		values = new String[]{keyValues.toString()};
-		this.keyValues = keyValues; 
-	}
-	
-        
-    @Override
-    public String toLine(){
-    	String out = keyValues[0].toLine();  
-    	for (int i=1; i<keyValues.length; i++){
-    		out+="|"+keyValues[i].toLine(); 
-    	}
-    	return out; 
-    }
-    @Override
-    public String toCSV(String separator){
-    	String out = keyValues[0].toCSV(separator);  
-    	for (int i=1; i<keyValues.length; i++){
-    		out+=separator+keyValues[i].toCSV(separator); 
-    	}
-    	return out; 
-    }
-    @Override
-    public String toXML(){
-    	String out = "<"+relationName+">\n"; 
-    	for (KeyValue kv: keyValues)
-    		out+=kv.toXML(); 
-    	return out + "</"+relationName+">"; 
-    }
-    @Override
-    public String toJson(){
-    	String out = "{" + relationName+": {"; 
-    	out +=  keyValues[0].toJson();  
-    	for (int i=1; i<keyValues.length; i++){
-    		out += "," + keyValues[i].toJson() ;  
-    	}
-    	return out + "}}";  
+{   
+    protected KeyValue[] keyValues; 
+    
+    public ArrayEntityInstance(String attributeName, KeyValue[] keyValues){
+        super(attributeName); 
+        headers = new String[]{relationName}; 
+        types =  new String[]{"a"}; 
+        values = new String[]{keyValues.toString()};
+        this.keyValues = keyValues; 
     }
     
-    public static void main(String argz[]){
-    	KeyValue kv1 = new KeyValue("p", "a", "s"); 
-    	KeyValue kv2 = new KeyValue("p", "a", "s"); 
-    	KeyValue kv3 = new KeyValue("p", "a", "s"); 
-    	KeyValue kv4 = new KeyValue("p", "a", "s"); 
-    	
-    	ArrayEntityInstance a = new ArrayEntityInstance( "name", new KeyValue[]{kv1, kv2, kv3, kv4}); 
-    	System.out.println(a.toJson());
-    	System.out.println(a.toXML());
-    	System.out.println(a.toLine());
+ 
+    @Override
+    public String toLine(SchemaFilters filters){
+    	HashMap<String, Boolean> filter = filters.getEntityFilter(relationName);
+        String out =  (filter==null || filter.get(keyValues[0])!=null) ? keyValues[0].toLine() : "";
+        for (int i=1; i<keyValues.length; i++){
+            out+="|"+keyValues[i].toLine(); 
+        }
+        out = out.trim().replaceAll("^\\|", "");
+        return out; 
     }
+    
+    @Override
+    public String toCSV(String separator, SchemaFilters filters){
+    	HashMap<String, Boolean> filter = filters.getEntityFilter(relationName);
+        String out =  (filter==null || filter.get(keyValues[0])!=null) ? keyValues[0].toCSV() : "";
+        for (int i=1; i<keyValues.length; i++){
+            out+=  separator + ((filter==null || filter.get(keyValues[i])!=null) ? separator+keyValues[i].toCSV() : ""); 
+        }
+        return out; 
+    }
+    
+    @Override
+    public String toXML(SchemaFilters filters){
+    	HashMap<String, Boolean> filter = filters.getEntityFilter(relationName);
+        String out = "<"+relationName+">\n"; 
+        for (KeyValue kv: keyValues)
+            out+=  (filter==null || filter.get(kv.key)!=null) ? kv.toXML() : ""; 
+        return out + "</"+relationName+">"; 
+    }
+    @Override
+    public String toJson(SchemaFilters filters){
+    	HashMap<String, Boolean> filter = filters.getEntityFilter(relationName);
+        String out = "{" + relationName+": {";   
+        for (KeyValue kv: keyValues){
+            if ((filter==null || filter.get(kv.key)!=null)){
+                out +=  kv.toJson();
+                out += ",";
+            }
+        }
+        out = out.trim().replaceAll("\\,$", "");
+        return out + "}}";  
+    }
+    
     
 }

@@ -60,7 +60,7 @@ public class StarLineItemGenerator implements Iterable<Entity> {
 		int count = 0; 
 		//EntityPrinter p = new EntityPrinter();		
 		for (Entity entity : gen) {
-            System.out.println(entity.toJson());
+            System.out.println(entity.toJson(null));
 			//long rnum = entity.getRowNumber();
             //if (rnum%100000 ==0) System.out.println(rnum);
           //p.print(custGen, "star_partsupplier", "json");

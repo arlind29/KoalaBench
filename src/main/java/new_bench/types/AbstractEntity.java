@@ -15,47 +15,49 @@ package new_bench.types;
 
 import java.util.HashMap;
 
+import new_bench.util.SchemaFilters;
+
 public abstract class AbstractEntity implements Entity 
 {
-	protected  final long rowNumber;
-	public long getRowNumber(){return rowNumber;}
-	
-	protected EntityInstance entity; 
-	
-	protected String relationName; 
-	protected HashMap<String, Boolean> projMap = new HashMap<String, Boolean>(); // projection map
-	
-	public String[] headers(){return entity.headers;} 
-	public String[] values(){return entity.values;}
-	public String[] types(){return entity.types;}
-	
-	public HashMap<String, Boolean> getProjectionMap(){return entity.projMap;}
-	public String getRelationName(){return entity.relationName;}
+    protected  final long rowNumber;
+    public long getRowNumber(){return rowNumber;}
+    
+    protected EntityInstance entity; 
+    
+    protected String relationName; 
+    protected HashMap<String, Boolean> projMap = new HashMap<String, Boolean>(); // projection map
+    
+    public String[] headers(){return entity.headers;} 
+    public String[] values(){return entity.values;}
+    public String[] types(){return entity.types;}
+    
+    public HashMap<String, Boolean> getProjectionMap(){return entity.projMap;}
+    public String getRelationName(){return entity.relationName;}
    
-	public void setProjection(String[] projHeaders){entity.setProjection(projHeaders);	}
-	public void setPrefix(String prefix){this.entity.setPrefix(prefix); }
-	
-	public AbstractEntity(long rowNumber){
-		this.rowNumber = rowNumber;
-		//this.entity = new TpchEntityInstance(headers, types, values); 
-	}
-	
-	public EntityInstance getEntity(){ return entity; }
-	
+    public void setProjection(String[] projHeaders){entity.setProjection(projHeaders);  }
+    public void setPrefix(String prefix){this.entity.setPrefix(prefix); }
+    
+    public AbstractEntity(long rowNumber){
+        this.rowNumber = rowNumber;
+        //this.entity = new TpchEntityInstance(headers, types, values); 
+    }
+    
+    public EntityInstance getEntity(){ return entity; }
+    
     @Override
-    public String toLine() { return entity.toLine();   }
+    public String toLine(SchemaFilters filters) { return entity.toLine(filters);   }
     @Override
-    public String toJson(){ return entity.toJson(); }
+    public String toJson(SchemaFilters filters){ return entity.toJson(filters); }
     @Override
-    public String toElasticSearchJson(){
-    	String str = "{\"index\": {_index: \"tpch\", _type: \""+ this.relationName + "\", _id: "+ this.rowNumber + "}}";
-    	return str + "\n"  + this.toJson();      	
+    public String toElasticSearchJson(SchemaFilters filters){
+        String str = "{\"index\": {_index: \"tpch\", _type: \""+ this.relationName + "\", _id: "+ this.rowNumber + "}}";
+        return str + "\n"  + this.toJson(filters);       
     }
     
     @Override
-    public String toXML(){ return entity.toXML(); }
+    public String toXML(SchemaFilters filters){ return entity.toXML(filters); }
     
     @Override
-    public String toCSV(String separator){return entity.toCSV(separator);    }
+    public String toCSV(String separator, SchemaFilters filters){return entity.toCSV(separator, filters);    }
     
 }

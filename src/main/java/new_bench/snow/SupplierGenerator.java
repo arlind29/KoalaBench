@@ -174,13 +174,13 @@ public class SupplierGenerator
     	SupplierGenerator gen = new SupplierGenerator(1,1,1);
     	int i=0;
     	for (Supplier x: gen){
-    		System.out.println(x.toJson());
+    		System.out.println(x.toJson(null));
     		i++; if (i>4) break; 
     	}
     	System.out.println();
     	
     	SupplierGeneratorIterator it = (SupplierGeneratorIterator) gen.iterator();
-		System.out.println(it.makeSupplier(1).toJson()); 
+		System.out.println(it.makeSupplier(1).toJson(null)); 
 
     }
     

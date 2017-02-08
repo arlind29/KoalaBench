@@ -126,14 +126,14 @@ public class CustomerGenerator
     	CustomerGenerator gen = new CustomerGenerator(1,1,1);
     	int i=0;
     	for (Customer cust: gen){
-    		System.out.println(cust.toJson());
+    		System.out.println(cust.toJson(null));
     		i++; if (i>4) break; 
     	}
 		
     	System.out.println();
     	
 		CustomerGeneratorIterator it = (CustomerGeneratorIterator) gen.iterator();
-		System.out.println(it.makeCustomer(1).toJson()); 
+		System.out.println(it.makeCustomer(1).toJson(null)); 
 
     }
 }

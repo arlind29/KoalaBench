@@ -18,10 +18,10 @@ import new_bench.snow.Part;
 import new_bench.snow.PartSupplier;
 import new_bench.snow.Region;
 import new_bench.snow.Supplier;
-import new_bench.types.AbstractMultiEntity;
+import new_bench.types.MultiEntity;
 import new_bench.types.EntityInstance;
 
-public class PartSupplierStar extends AbstractMultiEntity{
+public class PartSupplierStar extends MultiEntity{
 //    private final long rowNumber;
     //private final Part part; private final Supplier supplier;  private final PartSupplier partSupplier;
     //private final Nation nation; private final Region region; 
@@ -56,9 +56,9 @@ public class PartSupplierStar extends AbstractMultiEntity{
     	Region r = new Region(1, 1, "FRA");
     	PartSupplierStar x = new PartSupplierStar(1, p, s, ps, n, r);
     	System.out.println(x); 
-    	System.out.println(x.toLine());
-    	System.out.println(x.toJson());
-    	System.out.println(x.toXML());
-    	System.out.println(x.toCSV(","));
+    	System.out.println(x.toLine(null));
+    	System.out.println(x.toJson(null));
+    	System.out.println(x.toXML(null));
+    	System.out.println(x.toCSV(",", null));
     }    
 }

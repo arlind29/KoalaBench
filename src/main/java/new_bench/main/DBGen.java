@@ -1,6 +1,7 @@
 package new_bench.main;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Vector;
 
 import new_bench.flat.FlatLineItemGenerator;
@@ -11,6 +12,7 @@ import new_bench.star.StarCustomerGenerator;
 import new_bench.star.StarLineItemGenerator;
 import new_bench.star.StarSupplierGenerator;
 import new_bench.util.EntityPrinter;
+import new_bench.util.SchemaFilters;
 
 public class DBGen{
 	
@@ -21,12 +23,13 @@ public class DBGen{
 	int step = 1; int children = 1; // default values 
 	boolean printToHdfs = false; 
 	
-	EntityPrinter p = new EntityPrinter(); 
+	EntityPrinter p; 
 	String genDataDir="data_gen"; 
 	static String sep = File.separator; 
-	
+	 
 
 	public DBGen(String[] argz){
+		SchemaFilters filters = new SchemaFilters();
 		for (String arg: argz) { 
 			options.add(arg.trim().toLowerCase());
 			// scale factor
@@ -40,6 +43,10 @@ public class DBGen{
 				this.genDataDir = arg.substring(1);  
 				this.genDataDir = this.genDataDir.trim().replaceAll("\\"+File.separator+"*$", "");
 			}			
+			
+			if (arg.startsWith("filter-file=")) {
+				filters = SchemaFilters.readFromFile(arg.substring(12));
+			}
 		}
 		 			
 		// FORMAT
@@ -59,15 +66,20 @@ public class DBGen{
 		// check on model options
 		if (noModelOptions>1) {System.out.println("ERROR: Multiple model options");  return;}
 		
+		 p = new EntityPrinter(filters);
+		
 	}
 	
 	public void generate(){
+		
 		System.out.println("Generating data with sf="+scaleFactor); 		
 		System.out.println("Data generation started");
 		System.out.println("Data model: "+model);
 		System.out.println("Data format: "+format);
 		System.out.println("Scale factor: "+scaleFactor);
 		System.out.println("..."); 
+		
+		this.scaleFactor = 0.001; 
 		
 		switch (model){
 			case "snow": generateSnow(); break;
@@ -151,7 +163,7 @@ public class DBGen{
 	}
 
 	public static void main(String argz[]){	
-		argz = new String[3]; argz[0]="sf1"; argz[1]="elastic_search_json"; argz[2]="flat"; //argz[3]="file:ytytyt/jhj//";
+		argz = new String[4]; argz[0]="sf1"; argz[1]="snow"; argz[2]="filter-file=schemas.txt"; argz[3]="json"; //argz[3]="file:ytytyt/jhj//";
 		DBGen gen = new DBGen(argz);
 		gen.generate();
 	}

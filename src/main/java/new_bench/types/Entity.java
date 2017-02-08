@@ -13,6 +13,8 @@
  */
 package new_bench.types;
 
+import new_bench.util.SchemaFilters;
+
 public interface Entity
 {
     long getRowNumber();
@@ -25,10 +27,10 @@ public interface Entity
     
     //public void setProjection(String[] proHeaders);  
     
-    public String toLine();
-    public String toJson();
-    public String toXML();
-    public String toElasticSearchJson(); 
-    public String toCSV(String valueSeparator);
+    public String toLine(SchemaFilters filters);
+    public String toJson(SchemaFilters filters);
+    public String toXML(SchemaFilters filters);
+    public String toElasticSearchJson(SchemaFilters filters); 
+    public String toCSV(String valueSeparator, SchemaFilters filters);
     
 }

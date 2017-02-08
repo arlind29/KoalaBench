@@ -20,10 +20,10 @@ import new_bench.snow.Order;
 import new_bench.snow.Part;
 import new_bench.snow.Region;
 import new_bench.snow.Supplier;
-import new_bench.types.AbstractMultiEntity;
+import new_bench.types.MultiEntity;
 import new_bench.types.EntityInstance;
 
-public class FlatLineItem extends AbstractMultiEntity{
+public class FlatLineItem extends MultiEntity{
 //    private final long rowNumber;
     //private final Part part; private final Supplier supplier;  private final PartSupplier partSupplier;
     //private final Nation nation; private final Region region; 
@@ -90,10 +90,6 @@ public class FlatLineItem extends AbstractMultiEntity{
     	
     	FlatLineItem x = new FlatLineItem(1, li, o, c, c_n, c_r, p, s, s_n, s_r);
     	System.out.println(x); 
-    	System.out.println(x.toJson());
-    	System.out.println(x.toXML());
-    	System.out.println(x.toLine());
-    	System.out.println(x.toCSV(","));
     	
     	System.out.println();
     	for (String att: x.headers())

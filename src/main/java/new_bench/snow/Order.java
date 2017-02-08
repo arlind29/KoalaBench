@@ -86,10 +86,10 @@ public class Order extends AbstractEntity{
     public static void main(String argz[]){
     	Order x = new Order(1,1,1,'a',1,9001,"a","b",4,"t");
     	System.out.println(x); 
-    	System.out.println(x.toLine());
-    	System.out.println(x.toJson());
-    	System.out.println(x.toXML());
-    	System.out.println(x.toCSV(","));
+    	System.out.println(x.toLine(null));
+    	System.out.println(x.toJson(null));
+    	System.out.println(x.toXML(null));
+    	System.out.println(x.toCSV(",", null));
     }    
     
 

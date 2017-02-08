@@ -1,5 +1,7 @@
 package new_bench.types;
 
+import java.util.HashMap;
+
 
 public class KeyValue {
 	protected String key;
@@ -24,7 +26,7 @@ public class KeyValue {
     	return "<"+key + ">" + addQuotes(value, type) + "</"+key + ">";
     }
     
-    public String toCSV(String separator){
+    public String toCSV(){
     	System.exit(-1);;
     	return ""; 
     }

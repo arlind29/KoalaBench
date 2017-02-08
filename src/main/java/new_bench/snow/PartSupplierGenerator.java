@@ -140,14 +140,14 @@ public class PartSupplierGenerator
     	PartSupplierGenerator gen = new PartSupplierGenerator(1,1,1);
     	int i=0;
     	for (PartSupplier x: gen){
-    		System.out.println(x.toJson());
+    		System.out.println(x.toJson(null));
     		i++; if (i>4) break; 
     	}
 		
     	System.out.println();
     	
     	PartSupplierGeneratorIterator it = (PartSupplierGeneratorIterator) gen.iterator();
-		System.out.println(it.makePartSupplier(1).toJson()); 
+		System.out.println(it.makePartSupplier(1).toJson(null)); 
     }
     
 }

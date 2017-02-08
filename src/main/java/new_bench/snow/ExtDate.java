@@ -70,12 +70,12 @@ public class ExtDate extends AbstractEntity{
 		calendar.add(Calendar.DATE, 0);
 
 		ExtDate dt = new ExtDate(calendar); 
-		System.out.println(dt.toJson());
+		System.out.println(dt.toJson(null));
 
 		calendar = (Calendar) GenerateUtils.MIN_DATE.clone();  
 		calendar.add(Calendar.DATE, 2556);
 		
 		dt = new ExtDate(calendar); 
-		System.out.println(dt.toJson());
+		System.out.println(dt.toJson(null));
 	}
 }

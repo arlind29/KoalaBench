@@ -17,12 +17,12 @@ import new_bench.snow.Customer;
 import new_bench.snow.Nation;
 import new_bench.snow.Order;
 import new_bench.snow.Region;
-import new_bench.types.AbstractMultiEntity;
+import new_bench.types.MultiEntity;
 import new_bench.types.ArrayEntityInstance;
 import new_bench.types.EntityInstance;
 import new_bench.types.KeyValue;
 
-public class FlatOrderWithPartNames extends AbstractMultiEntity{
+public class FlatOrderWithPartNames extends MultiEntity{
 //    private final long rowNumber;
     //private final Part part; private final Supplier supplier;  private final PartSupplier partSupplier;
     //private final Nation nation; private final Region region; 
@@ -72,10 +72,10 @@ public class FlatOrderWithPartNames extends AbstractMultiEntity{
     	
     	FlatOrderWithPartNames x = new FlatOrderWithPartNames(1, o, c, c_n, c_r, a);
     	System.out.println(x); 
-    	System.out.println(x.toJson());
-    	System.out.println(x.toXML());
-    	System.out.println(x.toLine());
-    	System.out.println(x.toCSV(","));
+    	System.out.println(x.toJson(null));
+    	System.out.println(x.toXML(null));
+    	System.out.println(x.toLine(null));
+    	System.out.println(x.toCSV(",", null));
     	
     }    
 }

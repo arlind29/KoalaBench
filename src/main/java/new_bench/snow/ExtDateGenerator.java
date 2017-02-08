@@ -80,7 +80,7 @@ public class ExtDateGenerator
     	ExtDateGenerator gen = new ExtDateGenerator();
     	int i=0;
     	for (ExtDate date: gen){
-    		System.out.println(date.toJson());
+    		System.out.println(date.toJson(null));
     		i++; if (i>4) break; 
     	}
 		
@@ -90,7 +90,7 @@ public class ExtDateGenerator
 		calendar.add(Calendar.DATE, 2);
 
     	ExtDateGeneratorIterator it = (ExtDateGeneratorIterator) gen.iterator();
-		System.out.println(it.makeDate(calendar).toJson()); 
+		System.out.println(it.makeDate(calendar).toJson(null)); 
 
     }
 }
